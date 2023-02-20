@@ -6,9 +6,32 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
 
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="AppTitleBar" Background="Transparent">
+            <Rectangle x:Name="bkgTitleBar" Fill="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Background="Transparent">
+                    <MenuBar>
+                        <MenuBarItem Title="Game">
+                            <MenuFlyoutItem Text="Request New"/>
+                            <MenuFlyoutItem Text="Leave"/>
+                        </MenuBarItem>
+                    </MenuBar>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid>
+            
+        </Grid>
     </Grid>
 </Page>
