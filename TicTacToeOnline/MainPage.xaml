@@ -14,7 +14,7 @@
             <RowDefinition Height="48"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid x:Name="AppTitleBar" Background="Transparent">
+        <Grid x:Name="AppTitleBar" Background="Transparent" Grid.Row="0">
             <Rectangle x:Name="bkgTitleBar" Fill="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -30,8 +30,20 @@
                 </Grid>
             </Grid>
         </Grid>
-        <Grid>
-            
+        <Grid x:Name="MainPanel" Background="Transparent" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+            </Grid>
         </Grid>
     </Grid>
 </Page>
