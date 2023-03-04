@@ -53,5 +53,10 @@ namespace TicTacToeOnline
             TextBlock textBlock = sender as TextBlock;
             textBlock.Text = "I'll be displaying your outgoing ip address and port I'll be listening on like this: XXXX.XXXX.XXXX.XXXX:XXXX";
         }
+
+        private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
