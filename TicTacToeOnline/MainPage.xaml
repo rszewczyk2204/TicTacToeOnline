@@ -38,11 +38,21 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="1" BorderThickness="10">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="10*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBlock x:Name="IpTextBlock" Loaded="IpTextBlock_Loaded"/>
+                </Grid>
+                <Grid Grid.Row="1" BorderThickness="1" BorderBrush="Black" Background="White">
+                    <TextBlock AutomationProperties.Name="multi-line TextBox" TextWrapping="Wrap"  MinWidth="400"/>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <TextBox AutomationProperties.Name="simple TextBox" x:Name="comText" FontSize="24" Height="48" Margin="0, 0, 0, 24" LostFocus="comText_LostFocus" PointerEntered="comText_PointerEntered"/>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>

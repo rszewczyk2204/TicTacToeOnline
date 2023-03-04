@@ -3,6 +3,7 @@ using Windows.UI.ViewManagement;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 //Szablon elementu Pusta strona jest udokumentowany na stronie https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x415
 
@@ -28,7 +29,29 @@ namespace TicTacToeOnline
 
             Window.Current.SetTitleBar(bkgTitleBar);
 
+            this.Loaded += (object sender, RoutedEventArgs e) =>
+            {
+                comText.Focus(FocusState.Programmatic);
+            };
+        }
 
+        private void comText_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+
+            textBox.Background = new SolidColorBrush(Colors.White);
+        }
+
+        private void comText_PointerEntered(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            textBox.Focus(FocusState.Programmatic);
+        }
+
+        private void IpTextBlock_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextBlock textBlock = sender as TextBlock;
+            textBlock.Text = "I'll be displaying your outgoing ip address and port I'll be listening on like this: XXXX.XXXX.XXXX.XXXX:XXXX";
         }
     }
 }
