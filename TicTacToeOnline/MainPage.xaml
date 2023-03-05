@@ -25,6 +25,7 @@
                         <MenuBarItem Title="Game">
                             <MenuFlyoutItem Text="Request New"/>
                             <MenuFlyoutItem Text="Leave"/>
+                            <MenuFlyoutItem Text="Choose name" Click="MenuFlyoutItem_Click"/>
                         </MenuBarItem>
                     </MenuBar>
                 </Grid>

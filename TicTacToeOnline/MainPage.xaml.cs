@@ -4,6 +4,7 @@ using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using System;
 
 //Szablon elementu Pusta strona jest udokumentowany na stronie https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x415
 
@@ -52,6 +53,26 @@ namespace TicTacToeOnline
         {
             TextBlock textBlock = sender as TextBlock;
             textBlock.Text = "I'll be displaying your outgoing ip address and port I'll be listening on like this: XXXX.XXXX.XXXX.XXXX:XXXX";
+        }
+
+        private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ContentDialog dialog = new ContentDialog();
+
+                dialog.XamlRoot = this.XamlRoot;
+                dialog.Title = "Choose nickname";
+                dialog.PrimaryButtonText = "Save";
+                dialog.SecondaryButtonText = "Cancel";
+                dialog.DefaultButton = ContentDialogButton.Primary;
+                dialog.Content = new ChooseNickName();
+
+                var result = dialog.ShowAsync();
+            } catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
