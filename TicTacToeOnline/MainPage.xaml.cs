@@ -47,27 +47,32 @@ namespace TicTacToeOnline
         private void IpTextBlock_Loaded(object sender, RoutedEventArgs e)
         {
             TextBlock textBlock = sender as TextBlock;
-            textBlock.Text = "I'll be displaying your outgoing ip address and port I'll be listening on like this: XXXX.XXXX.XXXX.XXXX:XXXX";
+            textBlock.Text = "I'll be displaying your public ip address and port I'll be listening on like this: XXXX.XXXX.XXXX.XXXX:XXXX";
         }
 
-        private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+        private async void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                ContentDialog dialog = new ContentDialog();
+            ContentDialog dialog = new ContentDialog();
 
-                dialog.XamlRoot = this.XamlRoot;
-                dialog.Title = "Choose nickname";
-                dialog.PrimaryButtonText = "Save";
-                dialog.SecondaryButtonText = "Cancel";
-                dialog.DefaultButton = ContentDialogButton.Primary;
-                dialog.Content = new ChooseNickName();
+            dialog.XamlRoot = this.XamlRoot;
+            dialog.Title = "Choose nickname";
+            dialog.PrimaryButtonText = "Save";
+            dialog.SecondaryButtonText = "Cancel";
+            dialog.DefaultButton = ContentDialogButton.Primary;
+            dialog.Content = new ChooseNickName();
 
-                var result = dialog.ShowAsync();
-            } catch(Exception ex)
+            var result = await dialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
             {
-                Console.WriteLine(ex.Message);
+                this.NameBlock.Text = "Hey, " + (dialog.Content as ChooseNickName).Text;
             }
+        }
+
+        private void NameBlock_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextBlock textBlock = sender as TextBlock;
+            textBlock.Text = "Hey, ";
         }
     }
 }

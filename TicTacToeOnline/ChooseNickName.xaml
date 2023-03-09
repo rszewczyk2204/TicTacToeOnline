@@ -7,6 +7,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <TextBox/>
+        <TextBox x:Name="NickNameBox" AccessKey="NickNameBox"/>
     </StackPanel>
 </Page>
