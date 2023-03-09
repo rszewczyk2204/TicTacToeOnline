@@ -17,5 +17,10 @@ namespace TicTacToeOnline
         {
             this.InitializeComponent();
         }
+
+        public string Text
+        {
+            get => this.NickNameBox.Text;
+        }
     }
 }
