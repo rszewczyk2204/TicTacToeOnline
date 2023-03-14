@@ -7,13 +7,11 @@ namespace TicTacToeOnline
         public ValidatorException()
             : this("Invalid nickname")
         {
-            
         }
 
         public ValidatorException(String message)
             : base(message)
         {
-
         }
     }
 }
