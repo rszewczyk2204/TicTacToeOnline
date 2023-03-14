@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace TicTacToeOnline
 {
@@ -47,7 +49,7 @@ namespace TicTacToeOnline
         /// </summary>
         /// <param name="nickName"></param>
         private static void DeconstructString(ref String nickName)
-        {
+    {
 
         }
     }
