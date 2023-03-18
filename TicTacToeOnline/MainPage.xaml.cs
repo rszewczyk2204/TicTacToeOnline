@@ -27,6 +27,7 @@ namespace TicTacToeOnline
 
             this.Loaded += (object sender, RoutedEventArgs e) =>
             {
+                ShowNickNameWindow(true);
                 comText.Focus(FocusState.Programmatic);
             };
         }
@@ -50,29 +51,30 @@ namespace TicTacToeOnline
             textBlock.Text = "I'll be displaying your public ip address and port I'll be listening on like this: XXXX.XXXX.XXXX.XXXX:XXXX";
         }
 
-        private async void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+        private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {
-            ContentDialog dialog = new ContentDialog();
-
-            dialog.XamlRoot = this.XamlRoot;
-            dialog.Title = "Choose nickname";
-            dialog.PrimaryButtonText = "Save";
-            dialog.SecondaryButtonText = "Cancel";
-            dialog.DefaultButton = ContentDialogButton.Primary;
-            dialog.Content = new ChooseNickName();
-
-            var result = await dialog.ShowAsync();
-
-            if (result == ContentDialogResult.Primary)
-            {
-                this.NameBlock.Text = "Hey, " + (dialog.Content as ChooseNickName).Text;
-            }
+            ShowNickNameWindow(false);
         }
 
         private void NameBlock_Loaded(object sender, RoutedEventArgs e)
         {
             TextBlock textBlock = sender as TextBlock;
             textBlock.Text = "Hey, ";
+        }
+
+        private async void ShowNickNameWindow(bool isCalledOnLoaded = false)
+        {
+            ChooseNickName dialog = new ChooseNickName();
+
+            dialog.XamlRoot = this.XamlRoot;
+            dialog.IsSecondaryButtonEnabled = !isCalledOnLoaded;
+
+            await dialog.ShowAsync();
+
+            if (dialog.Result == ValidationResult.Success)
+            {
+                this.NameBlock.Text = "Hey, " + dialog.Text;
+            }
         }
     }
 }

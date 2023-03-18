@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TicTacToeOnline
 {
@@ -13,44 +11,90 @@ namespace TicTacToeOnline
             '\n',
             '\r',
             '-',
-            ' '
+            ' ',
+            '-',
+            '\\',
+            '/',
+            '.'
         };
 
-        private static Dictionary<Guid, String> illegalWords = new Dictionary<Guid, String>()
+        private static List<String> illegalWords = new List<string>()
         {
-            { Guid.NewGuid(), "arse" },
-            { Guid.NewGuid(), "arsehead" },
-            { Guid.NewGuid(), "arsehole" },
-            { Guid.NewGuid(), "ass" },
-            { Guid.NewGuid(), "asshole" },
-            { Guid.NewGuid(), "bastard" },
-
+            "arse",
+            "arsehead",
+            "arsehole",
+            "ass",
+            "asshole",
+            "bastard",
+            "bitch",
+            "bloody",
+            "bollocks",
+            "brotherfucker",
+            "bugger",
+            "bullshit",
+            "childfucker",
+            "christonabike",
+            "christonacracker",
+            "cock",
+            "cocksucker",
+            "crap",
+            "cunt",
+            "damn",
+            "damnit",
+            "dick",
+            "dickhead",
+            "dyke",
+            "fatherfucker",
+            "frigger",
+            "fuck",
+            "goddamn",
+            "godsdamn",
+            "hell",
+            "holyshit",
+            "horseshit",
+            "inshit",
+            "jesusfuck",
+            "kike",
+            "motherfucker",
+            "nigga",
+            "nigra",
+            "piss",
+            "prick",
+            "pussy",
+            "shit",
+            "shitass",
+            "shite",
+            "sisterfucker",
+            "slut",
+            "sonofabitch",
+            "sonofawhore",
+            "spastic",
+            "turd",
+            "twat",
+            "wanker"
         };
 
         private Validator() { }
 
-        public static void ValidateNickName(string nickName)
+        public static bool ValidateNickName(string nickName)
         {
-            if (String.IsNullOrEmpty(nickName) || ContainsInvalidCharacters(nickName) 
-                    || ContainsInvalidCharacters(nickName) || )
-            {
-                throw new ValidatorException();
-            }
+            return String.IsNullOrEmpty(nickName) || ContainsIllegalCharacters(nickName)
+                    || ContainsIllegalWords(nickName);
         }
 
-        private static bool ContainsInvalidCharacters(string nickName)
+        private static bool ContainsIllegalCharacters(string nickName)
         {
             return nickName.Any(c => illegalCharacters.Contains(c));
         }
 
-        /// <summary>
-        /// Deconstruct around what?
-        /// Every possible character out of ASCII or normal english alphabet?
-        /// </summary>
-        /// <param name="nickName"></param>
-        private static void DeconstructString(ref String nickName)
-    {
+        private static bool ContainsIllegalWords(string nickName)
+        {
+            return DeconstructString(nickName).Any(s => illegalWords.Contains(s.ToLower()));
+        }
 
+        private static string[] DeconstructString(string nickName)
+        {
+            return nickName.Split('\n');
         }
     }
 }
