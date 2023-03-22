@@ -1,18 +1,18 @@
-// Copyright (c) Microsoft Corporation and Contributors.
-// Licensed under the MIT License.
-
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace TicTacToeOnline
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class ChooseNickName : Page
+    public enum ValidationResult
     {
+        Success, 
+        Failure
+    }
+
+    public sealed partial class ChooseNickName : ContentDialog
+    {
+        public ValidationResult Result { get; set; }
+
         public ChooseNickName()
         {
             this.InitializeComponent();
@@ -21,6 +21,25 @@ namespace TicTacToeOnline
         public string Text
         {
             get => this.NickNameBox.Text;
+        }
+
+        public void ShowFailedValidationText()
+        {
+            this.FailedValidationTextBox.Visibility = Visibility.Visible;
+        }
+
+        private void OK_Button_Clicked(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            if (Validator.ValidateNickName(NickNameBox.Text))
+            {
+                args.Cancel = true;
+                FailedValidationTextBox.Visibility = Visibility.Visible;
+                this.Result = ValidationResult.Failure;
+            }
+            else
+            {
+                this.Result = ValidationResult.Success;
+            }    
         }
     }
 }
