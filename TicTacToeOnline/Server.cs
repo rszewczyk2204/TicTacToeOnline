@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 
 namespace TicTacToeOnline
 {
@@ -48,7 +49,7 @@ namespace TicTacToeOnline
                     foreach (UnicastIPAddressInformation ip in item.GetIPProperties().UnicastAddresses)
                     {
                         if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
-                        {
+        {
                             output = ip.Address.ToString();
                         }
                     }
