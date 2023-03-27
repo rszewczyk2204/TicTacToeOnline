@@ -78,7 +78,7 @@ namespace TicTacToeOnline
 
         public static bool ValidateNickName(string nickName)
         {
-            return String.IsNullOrEmpty(nickName) || ContainsIllegalCharacters(nickName)
+            return string.IsNullOrEmpty(nickName) || ContainsIllegalCharacters(nickName)
                     || ContainsIllegalWords(nickName);
         }
 
@@ -95,6 +95,28 @@ namespace TicTacToeOnline
         private static string[] DeconstructString(string nickName)
         {
             return nickName.Split('\n');
+        }
+
+        public static bool ValidateIPPortInput(string ipPort)
+        {
+            return string.IsNullOrEmpty(ipPort) || !IsValidIPPortString(ipPort);
+        }
+
+        private static bool IsValidIPPortString(string ipPort)
+        {
+            string[] parts = ipPort.Split(':');
+            return IsIPValid(parts[0]) && IsValidPort(parts[1]);
+        }
+
+        private static bool IsIPValid(string ip)
+        {
+            string[] ipParts = ip.Split('.');
+            return ipParts.Length == 4 && ip.All(char.IsDigit);
+        }
+
+        private static bool IsValidPort(string port)
+        {
+            return port.Length > 0 && port.All(char.IsDigit);
         }
     }
 }

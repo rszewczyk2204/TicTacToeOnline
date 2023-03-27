@@ -24,8 +24,10 @@
                     <MenuBar>
                         <MenuBarItem Title="Game">
                             <MenuFlyoutItem Text="Request New"/>
-                            <MenuFlyoutItem Text="Leave"/>
-                            <MenuFlyoutItem Text="Choose name" Click="MenuFlyoutItem_Click"/>
+                            <MenuFlyoutItem x:Name="LeaveGameButton" Text="Leave" IsEnabled="False" Click="LeaveGameButtonClicked"/>
+                            <MenuFlyoutItem Text="Choose Name" Click="MenuFlyoutItem_Click"/>
+                            <MenuFlyoutItem x:Name="HostGameButton" Text="Host Game" Click="HostGameButtonClicked"/>
+                            <MenuFlyoutItem x:Name="JoinGameButton" Text="Join Game" Click="JoinGameButtonClicked"/>
                         </MenuBarItem>
                     </MenuBar>
                 </Grid>
@@ -50,13 +52,13 @@
                     <TextBlock x:Name="NameBlock" Loaded="NameBlock_Loaded"/>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <TextBlock x:Name="IpTextBlock" Loaded="IpTextBlock_Loaded"/>
+                    <TextBlock x:Name="IpTextBlock" Loaded="IpTextBlock_Loaded" Visibility="Collapsed"/>
                 </Grid>
                 <Grid Grid.Row="2" BorderThickness="1" BorderBrush="Black" Background="White">
-                    <TextBlock AutomationProperties.Name="multi-line TextBox" TextWrapping="Wrap"  MinWidth="400"/>
+                    <TextBlock AutomationProperties.Name="multi-line TextBox" TextWrapping="Wrap"  MinWidth="400" x:Name="ComTextBlock" Foreground="Black" Padding="20 20 20 20" FontSize="24"/>
                 </Grid>
                 <Grid Grid.Row="3">
-                    <TextBox AutomationProperties.Name="simple TextBox" x:Name="comText" FontSize="24" Height="48" Margin="0, 0, 0, 24" LostFocus="comText_LostFocus" PointerEntered="comText_PointerEntered"/>
+                    <TextBox AutomationProperties.Name="simple TextBox" x:Name="comText" FontSize="24" Height="48" Margin="0, 0, 0, 24" LostFocus="comText_LostFocus" PointerEntered="comText_PointerEntered" KeyDown="EnterKeyDown"/>
                 </Grid>
             </Grid>
         </Grid>
