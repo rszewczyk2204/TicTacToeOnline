@@ -5,11 +5,15 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using System;
+using System.Threading;
 
 namespace TicTacToeOnline
 {
     public sealed partial class MainPage : Page
     {
+        private String port;
+        private String ipAddress;
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -74,6 +78,38 @@ namespace TicTacToeOnline
             if (dialog.Result == ValidationResult.Success)
             {
                 this.NameBlock.Text = "Hey, " + dialog.Text;
+            }
+        }
+
+        private void HostGameButtonClicked(object sender, RoutedEventArgs e)
+        {
+            bool hasServerStarted = false;
+            Thread t = new Thread(() => Server.StartServer(ref ipAddress, ref port, out hasServerStarted));
+            t.Start();
+            t.Join();
+
+            if (hasServerStarted)
+            {
+                this.IpTextBlock.Text = ipAddress + ":" + port;
+                this.IpTextBlock.Visibility = Visibility.Visible;
+                LeaveGameButton.IsEnabled = true;
+                JoinGameButton.IsEnabled = false;
+            }
+        }
+
+        private async void JoinGameButtonClicked(object sender, RoutedEventArgs e)
+        {
+            JoinGame dialog = new JoinGame();
+
+            dialog.XamlRoot = this.XamlRoot;
+
+            await dialog.ShowAsync();
+
+            if (dialog.Result == JoinGameValidationResult.Success)
+            {
+                Client.JoinGame(dialog.IPAddress, dialog.Port);
+                HostGameButton.IsEnabled = false;
+                LeaveGameButton.IsEnabled = true;
             }
         }
     }
