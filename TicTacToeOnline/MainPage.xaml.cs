@@ -13,8 +13,8 @@ namespace TicTacToeOnline
 {
     public sealed partial class MainPage : Page
     {
-        private String port;
-        private String ipAddress;
+        private string nickname;
+        private Thread server = null;
 
         public MainPage()
         {
@@ -24,7 +24,6 @@ namespace TicTacToeOnline
                 CoreApplication.GetCurrentView().TitleBar;
             coreTitleBar.ExtendViewIntoTitleBar = true;
 
-            // Set caption buttons background to transparent.
             ApplicationViewTitleBar titleBar =
                 ApplicationView.GetForCurrentView().TitleBar;
             titleBar.ButtonBackgroundColor = Colors.Transparent;
@@ -51,12 +50,6 @@ namespace TicTacToeOnline
             textBox.Focus(FocusState.Programmatic);
         }
 
-        private void IpTextBlock_Loaded(object sender, RoutedEventArgs e)
-        {
-            TextBlock textBlock = sender as TextBlock;
-            textBlock.Text = "I'll be displaying your public ip address and port I'll be listening on like this: XXXX.XXXX.XXXX.XXXX:XXXX";
-        }
-
         private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {
             ShowNickNameWindow(false);
@@ -79,23 +72,29 @@ namespace TicTacToeOnline
 
             if (dialog.Result == ValidationResult.Success)
             {
-                this.NameBlock.Text = "Hey, " + dialog.Text;
+                this.nickname = dialog.Text;
+                this.NameBlock.Text = "Hey, " + nickname;
             }
         }
 
         private void HostGameButtonClicked(object sender, RoutedEventArgs e)
         {
             bool hasServerStarted = false;
-            Thread t = new Thread(() => Server.StartServer(ref ipAddress, ref port, out hasServerStarted));
-            t.Start();
-            t.Join();
+            string ip = null;
+            string port = null;
+            string message = String.Empty;
+
+            server = new Thread(() => Server.StartServer(out ip, out port, out hasServerStarted));
+            server.Start();
+            Server.Listen(ref message);
 
             if (hasServerStarted)
             {
-                this.IpTextBlock.Text = ipAddress + ":" + port;
-                this.IpTextBlock.Visibility = Visibility.Visible;
                 LeaveGameButton.IsEnabled = true;
                 JoinGameButton.IsEnabled = false;
+                HostGameButton.IsEnabled = false;
+                this.IPPortBlock.Text = ip + ":" + port;
+                this.IPPortBlock.Visibility = Visibility.Visible;
             }
         }
 
@@ -109,7 +108,6 @@ namespace TicTacToeOnline
 
             if (dialog.Result == JoinGameValidationResult.Success)
             {
-                Client.JoinGame(dialog.IPAddress, dialog.Port);
                 HostGameButton.IsEnabled = false;
                 LeaveGameButton.IsEnabled = true;
             }
@@ -118,16 +116,21 @@ namespace TicTacToeOnline
         private void LeaveGameButtonClicked(object sender, RoutedEventArgs e)
         {
             LeaveGameButton.IsEnabled = false;
+            HostGameButton.IsEnabled = true;
+            JoinGameButton.IsEnabled = true;
             Server.CloseServer();
             Client.LeaveGame();
+            IPPortBlock.Visibility = Visibility.Collapsed;
         }
 
         private void EnterKeyDown(object sender, KeyRoutedEventArgs e)
         {
-            if (e.Key == VirtualKey.Enter)
+            if (e.Key == VirtualKey.Enter && Client.IsConnected)
             {
-                this.ComTextBlock.Text += Functional.TransformMessage(this.NameBlock.Text, this.comText.Text);
+                String tMessage = Functional.TransformMessage(this.nickname, this.comText.Text);
+                this.ComTextBlock.Text += tMessage;
                 this.comText.Text = String.Empty;
+                Functional.SendMessage(Client.client, tMessage);
             }
         }
     }

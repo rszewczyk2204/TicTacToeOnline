@@ -8,11 +8,13 @@
     Title="Join Game"
     PrimaryButtonText="OK"
     SecondaryButtonText="Cancel"
-    PrimaryButtonClick="OKButtonClicked">
+    PrimaryButtonClick="OKButtonClicked"
+    SecondaryButtonClick="CancelButtonClicked">
 
     <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <TextBlock Text="Enter ip and port to join your friend"/>
         <TextBox x:Name="IPPortText" PlaceholderText="XXXX.XXXX.XXXX.XXXX:XXXX" Margin="0 10 0 10"/>
         <TextBlock x:Name="FailedValidationIPPortConfiguration" Text="Invalid ip:port configuration" Visibility="Collapsed"/>
+        <TextBlock x:Name="JoiningGame" Visibility="Collapsed"/>
     </StackPanel>
 </ContentDialog>

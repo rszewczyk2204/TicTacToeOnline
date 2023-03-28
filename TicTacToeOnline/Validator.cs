@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Toolkit;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -111,7 +112,7 @@ namespace TicTacToeOnline
         private static bool IsIPValid(string ip)
         {
             string[] ipParts = ip.Split('.');
-            return ipParts.Length == 4 && ip.All(char.IsDigit);
+            return ipParts.Length == 4 && ipParts.All(part => part.IsNumeric());
         }
 
         private static bool IsValidPort(string port)

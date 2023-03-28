@@ -6,7 +6,8 @@ namespace TicTacToeOnline
     public enum ValidationResult
     {
         Success, 
-        Failure
+        Failure,
+        Cancellation
     }
 
     public sealed partial class ChooseNickName : ContentDialog
@@ -40,6 +41,11 @@ namespace TicTacToeOnline
             {
                 this.Result = ValidationResult.Success;
             }    
+        }
+
+        private void CancellButtonClicked(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            this.Result = ValidationResult.Cancellation;
         }
     }
 }

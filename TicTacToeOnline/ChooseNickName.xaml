@@ -8,7 +8,8 @@
     Title="Choose nickname"
     PrimaryButtonText="OK"
     SecondaryButtonText="Cancel"
-    PrimaryButtonClick="OK_Button_Clicked">
+    PrimaryButtonClick="OK_Button_Clicked"
+    SecondaryButtonClick="CancellButtonClicked">
 
     <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <TextBox x:Name="NickNameBox" AccessKey="NickNameBox"/>

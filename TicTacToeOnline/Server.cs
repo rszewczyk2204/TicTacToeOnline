@@ -2,36 +2,46 @@
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using System.Threading.Tasks;
 
 namespace TicTacToeOnline
 {
+
     public sealed class Server
     {
         private static TcpListener server = null;
+        private static TcpClient client = null;
         private static Int32 _port = 13001;
         private static string CLOSE_TEXT_INFORMATION = "Close connection";
+        private static Byte[] bytes = new Byte[256];
 
         private Server()
         { }
 
-        public static void StartServer(ref string ipAddress, ref string port, out bool hasServerStarted)
+        public static void StartServer(out string ip, out string port, out bool hasServerStarted)
         {
-            ipAddress = GetLocalIPv4(NetworkInterfaceType.Ethernet);
-            port = _port.ToString();
+            
             try
             {
-                server = new TcpListener(IPAddress.Parse(ipAddress), _port);
+                ip = GetLocalIPv4(NetworkInterfaceType.Ethernet);
+                port = _port.ToString();
+                server = new TcpListener(IPAddress.Parse(ip), _port);
                 server.Start();
-
                 hasServerStarted = true;
-
-            } catch (Exception ex)
+                client = server.AcceptTcpClient();
+                
+            } 
+            catch (Exception)
             {
-                var excMessage = ex.Message;
-                server.Stop();
+                server?.Stop();
                 hasServerStarted = false;
+                ip = null;
+                port = null;
             }
+        }
+
+        public static void Listen()
+        {
+            
         }
 
         public static void CloseServer()
@@ -41,7 +51,7 @@ namespace TicTacToeOnline
 
         private static string GetLocalIPv4(NetworkInterfaceType _type)
         {
-            string output = String.Empty;
+            string output = "";
             foreach (NetworkInterface item in NetworkInterface.GetAllNetworkInterfaces())
             {
                 if (item.NetworkInterfaceType == _type && item.OperationalStatus == OperationalStatus.Up)
@@ -49,7 +59,7 @@ namespace TicTacToeOnline
                     foreach (UnicastIPAddressInformation ip in item.GetIPProperties().UnicastAddresses)
                     {
                         if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
-        {
+                        {
                             output = ip.Address.ToString();
                         }
                     }
