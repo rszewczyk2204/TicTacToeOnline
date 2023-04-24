@@ -5,4 +5,8 @@ The idea is to have a game for two people to play over the internet. As of now I
 opponent
 
 
-Beacuse it's my first attempt to write a program using UWP you can provide any ideas, solutions for bugs and/or errors you might find
+Beacuse it's my first attempt to write a program using UWP you can provide any ideas, solutions for bugs and/or errors you might find.
+
+For playing over internet you need either forward a port or install a software like Hamachi
+
+Status: Frozen
