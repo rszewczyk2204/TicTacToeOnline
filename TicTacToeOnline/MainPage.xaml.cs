@@ -8,6 +8,7 @@ using System;
 using System.Threading;
 using Windows.UI.Xaml.Input;
 using Windows.System;
+using Windows.UI.Xaml.Shapes;
 
 namespace TicTacToeOnline
 {
@@ -33,7 +34,6 @@ namespace TicTacToeOnline
 
             this.Loaded += (object sender, RoutedEventArgs e) =>
             {
-                ShowNickNameWindow(true);
                 comText.Focus(FocusState.Programmatic);
             };
         }
@@ -45,27 +45,15 @@ namespace TicTacToeOnline
             textBox.Background = new SolidColorBrush(Colors.White);
         }
 
-        private void comText_PointerEntered(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
+        private void comText_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
             textBox.Focus(FocusState.Programmatic);
         }
 
-        private void IpTextBlock_Loaded(object sender, RoutedEventArgs e)
-        {
-            TextBlock textBlock = sender as TextBlock;
-            textBlock.Text = "I'll be displaying your public ip address and port I'll be listening on like this: XXXX.XXXX.XXXX.XXXX:XXXX";
-        }
-
         private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {
             ShowNickNameWindow(false);
-        }
-
-        private void NameBlock_Loaded(object sender, RoutedEventArgs e)
-        {
-            TextBlock textBlock = sender as TextBlock;
-            textBlock.Text = "Hey, ";
         }
 
         private async void ShowNickNameWindow(bool isCalledOnLoaded = false)
@@ -76,11 +64,6 @@ namespace TicTacToeOnline
             dialog.IsSecondaryButtonEnabled = !isCalledOnLoaded;
 
             await dialog.ShowAsync();
-
-            if (dialog.Result == ValidationResult.Success)
-            {
-                this.NameBlock.Text = "Hey, " + dialog.Text;
-            }
         }
 
         private void HostGameButtonClicked(object sender, RoutedEventArgs e)
@@ -92,8 +75,6 @@ namespace TicTacToeOnline
 
             if (hasServerStarted)
             {
-                this.IpTextBlock.Text = ipAddress + ":" + port;
-                this.IpTextBlock.Visibility = Visibility.Visible;
                 LeaveGameButton.IsEnabled = true;
                 JoinGameButton.IsEnabled = false;
             }
@@ -126,9 +107,52 @@ namespace TicTacToeOnline
         {
             if (e.Key == VirtualKey.Enter)
             {
-                this.ComTextBlock.Text += Functional.TransformMessage(this.NameBlock.Text, this.comText.Text);
+                //this.ComTextBlock.Text += Functional.TransformMessage(this.NameBlock.Text, this.comText.Text);
                 this.comText.Text = String.Empty;
             }
+        }
+
+        private void UpperLeft_Click(object sender, RoutedEventArgs e)
+        {
+            var ellipse = new Ellipse
+            {
+                Stroke = new SolidColorBrush(Colors.White),
+                Width = 200,
+                Height = 200
+            };
+
+            var xShape = new Canvas
+            {
+                Width = 200,
+                Height = 200
+            };
+
+            var line1 = new Line
+            {
+                X1 = 0,
+                Y1 = 0,
+                X2 = 200,
+                Y2 = 200,
+                Stroke = new SolidColorBrush(Colors.White),
+                StrokeThickness = 2
+            };
+
+            var line2 = new Line
+            {
+                X1 = 200,
+                Y1 = 0,
+                X2 = 0,
+                Y2 = 200,
+                Stroke = new SolidColorBrush(Colors.White),
+                StrokeThickness = 2
+            };
+
+            xShape.Children.Add(line1);
+            xShape.Children.Add(line2);
+
+
+            this.UpperLeftButton.IsEnabled = false;
+            this.UpperLeft.Children.Add(xShape);
         }
     }
 }
