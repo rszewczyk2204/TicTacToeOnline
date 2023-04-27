@@ -20,7 +20,10 @@ namespace TicTacToeOnline.Configuration.Layout.GridLayout.Presenter.Implementati
         {
             Button button = sender as Button;
 
-            button.Content = new XControl();
+            if (button.Content == null)
+            {
+                button.Content = new XControl();
+            }
         }
     }
 }
