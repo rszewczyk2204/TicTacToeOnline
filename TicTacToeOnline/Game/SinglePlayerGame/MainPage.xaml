@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="TicTacToeOnline.Game.SinglePlayerGame.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
+    xmlns:Controls="using:TicTacToeOnline.Configuration.Layout">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="AppTitleBar" Background="Transparent" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Rectangle x:Name="bkgTitleBar" Fill="Transparent"/>
+                <Controls:CustomMenuBar/>
+        </Grid>
+        <Grid x:Name="Grid" Background="Transparent" Grid.Row="1" Margin="40 40 40 40">
+            <Controls:TicTacToeGrid/>
+        </Grid>
+    </Grid>
+</Page>
