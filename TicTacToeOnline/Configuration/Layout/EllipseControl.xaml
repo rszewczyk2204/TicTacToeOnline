@@ -10,6 +10,6 @@
     d:DesignWidth="400">
 
     <Grid>
-        <Ellipse Width="200" Height="200" Fill="Transparent" Stroke="White" StrokeThickness="20"/>
+        <Ellipse Width="200" Height="200" Fill="Transparent" Stroke="Red" StrokeThickness="20"/>
     </Grid>
 </UserControl>
