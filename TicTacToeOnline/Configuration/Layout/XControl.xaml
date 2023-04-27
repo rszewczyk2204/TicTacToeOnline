@@ -1,0 +1,27 @@
+﻿<UserControl
+    x:Class="TicTacToeOnline.Configuration.Layout.XControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TicTacToeOnline.Configuration.Layout"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Canvas Width="200" Height="200">
+        <Line X1="0" Y1="0" X2="200" Y2="200" Stroke="White" StrokeThickness="20"/>
+        <Line X1="0" Y1="200" X2="200" Y2="0" Stroke="White" StrokeThickness="20"/>
+    </Canvas>
+
+    <!--<Canvas>
+        <Path Stroke="White" StrokeThickness="10">
+            <Path.Data>
+                <GeometryGroup>
+                    <LineGeometry StartPoint="-100, -100" EndPoint="100, 100"/>
+                    <LineGeometry StartPoint="100, -100" EndPoint=", 100"/>
+                </GeometryGroup>
+            </Path.Data>
+        </Path>
+    </Canvas>-->
+</UserControl>

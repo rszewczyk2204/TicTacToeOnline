@@ -1,0 +1,63 @@
+﻿<UserControl
+    x:Class="TicTacToeOnline.Configuration.Layout.TicTacToeGrid"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl>
+        <Grid>
+            <Grid x:Name="GamePanel" Background="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Grid.Row="0">
+                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
+                    <Border BorderThickness="0, 0, 10, 10" BorderBrush="White"/>
+                </Grid>
+                <Grid Grid.Column="0" Grid.Row="1">
+                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
+                    <Border BorderThickness="0, 0, 10, 0" BorderBrush="White"/>
+                </Grid>
+                <Grid Grid.Column="0" Grid.Row="2">
+                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
+                    <Border BorderThickness="0, 10, 10, 0" BorderBrush="White"/>
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="0">
+                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
+                    <Border BorderThickness="0, 0, 10, 10" BorderBrush="White"/>
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="1">
+                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
+                    <Border BorderThickness="0, 0, 10, 0" BorderBrush="White"/>
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="2">
+                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
+                    <Border BorderThickness="0, 10, 10, 0" BorderBrush="White"/>
+                </Grid>
+                <Grid Grid.Column="2" Grid.Row="0">
+                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
+                    <Border BorderThickness="0, 0, 0, 10" BorderBrush="White"/>
+                </Grid>
+                <Grid Grid.Column="2" Grid.Row="1">
+                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
+                    <Border BorderThickness="0, 0, 0, 0" BorderBrush="White"/>
+                </Grid>
+                <Grid Grid.Column="2" Grid.Row="2">
+                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
+                    <Border BorderThickness="0, 10, 0, 0" BorderBrush="White"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </UserControl>
+</UserControl>

@@ -38,121 +38,121 @@ namespace TicTacToeOnline
             };
         }
 
-        private void comText_LostFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
+        //private void comText_LostFocus(object sender, RoutedEventArgs e)
+        //{
+        //    TextBox textBox = sender as TextBox;
 
-            textBox.Background = new SolidColorBrush(Colors.White);
-        }
+        //    textBox.Background = new SolidColorBrush(Colors.White);
+        //}
 
-        private void comText_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-            textBox.Focus(FocusState.Programmatic);
-        }
+        //private void comText_PointerEntered(object sender, PointerRoutedEventArgs e)
+        //{
+        //    TextBox textBox = sender as TextBox;
+        //    textBox.Focus(FocusState.Programmatic);
+        //}
 
-        private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
-        {
-            ShowNickNameWindow(false);
-        }
+        //private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ShowNickNameWindow(false);
+        //}
 
-        private async void ShowNickNameWindow(bool isCalledOnLoaded = false)
-        {
-            ChooseNickName dialog = new ChooseNickName();
+        //private async void ShowNickNameWindow(bool isCalledOnLoaded = false)
+        //{
+        //    ChooseNickName dialog = new ChooseNickName();
 
-            dialog.XamlRoot = this.XamlRoot;
-            dialog.IsSecondaryButtonEnabled = !isCalledOnLoaded;
+        //    dialog.XamlRoot = this.XamlRoot;
+        //    dialog.IsSecondaryButtonEnabled = !isCalledOnLoaded;
 
-            await dialog.ShowAsync();
-        }
+        //    await dialog.ShowAsync();
+        //}
 
-        private void HostGameButtonClicked(object sender, RoutedEventArgs e)
-        {
-            bool hasServerStarted = false;
-            Thread t = new Thread(() => Server.StartServer(ref ipAddress, ref port, out hasServerStarted));
-            t.Start();
-            t.Join();
+        //private void HostGameButtonClicked(object sender, RoutedEventArgs e)
+        //{
+        //    bool hasServerStarted = false;
+        //    Thread t = new Thread(() => Server.StartServer(ref ipAddress, ref port, out hasServerStarted));
+        //    t.Start();
+        //    t.Join();
 
-            if (hasServerStarted)
-            {
-                LeaveGameButton.IsEnabled = true;
-                JoinGameButton.IsEnabled = false;
-            }
-        }
+        //    if (hasServerStarted)
+        //    {
+        //        LeaveGameButton.IsEnabled = true;
+        //        JoinGameButton.IsEnabled = false;
+        //    }
+        //}
 
-        private async void JoinGameButtonClicked(object sender, RoutedEventArgs e)
-        {
-            JoinGame dialog = new JoinGame();
+        //private async void JoinGameButtonClicked(object sender, RoutedEventArgs e)
+        //{
+        //    JoinGame dialog = new JoinGame();
 
-            dialog.XamlRoot = this.XamlRoot;
+        //    dialog.XamlRoot = this.XamlRoot;
 
-            await dialog.ShowAsync();
+        //    await dialog.ShowAsync();
 
-            if (dialog.Result == JoinGameValidationResult.Success)
-            {
-                Client.JoinGame(dialog.IPAddress, dialog.Port);
-                HostGameButton.IsEnabled = false;
-                LeaveGameButton.IsEnabled = true;
-            }
-        }
+        //    if (dialog.Result == JoinGameValidationResult.Success)
+        //    {
+        //        Client.JoinGame(dialog.IPAddress, dialog.Port);
+        //        HostGameButton.IsEnabled = false;
+        //        LeaveGameButton.IsEnabled = true;
+        //    }
+        //}
 
-        private void LeaveGameButtonClicked(object sender, RoutedEventArgs e)
-        {
-            LeaveGameButton.IsEnabled = false;
-            Server.CloseServer();
-            Client.LeaveGame();
-        }
+        //private void LeaveGameButtonClicked(object sender, RoutedEventArgs e)
+        //{
+        //    LeaveGameButton.IsEnabled = false;
+        //    Server.CloseServer();
+        //    Client.LeaveGame();
+        //}
 
-        private void EnterKeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            if (e.Key == VirtualKey.Enter)
-            {
-                //this.ComTextBlock.Text += Functional.TransformMessage(this.NameBlock.Text, this.comText.Text);
-                this.comText.Text = String.Empty;
-            }
-        }
+        //private void EnterKeyDown(object sender, KeyRoutedEventArgs e)
+        //{
+        //    if (e.Key == VirtualKey.Enter)
+        //    {
+        //        //this.ComTextBlock.Text += Functional.TransformMessage(this.NameBlock.Text, this.comText.Text);
+        //        this.comText.Text = String.Empty;
+        //    }
+        //}
 
-        private void UpperLeft_Click(object sender, RoutedEventArgs e)
-        {
-            var ellipse = new Ellipse
-            {
-                Stroke = new SolidColorBrush(Colors.White),
-                Width = 200,
-                Height = 200
-            };
+        //private void UpperLeft_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var ellipse = new Ellipse
+        //    {
+        //        Stroke = new SolidColorBrush(Colors.White),
+        //        Width = 200,
+        //        Height = 200
+        //    };
 
-            var xShape = new Canvas
-            {
-                Width = 200,
-                Height = 200
-            };
+        //    var xShape = new Canvas
+        //    {
+        //        Width = 200,
+        //        Height = 200
+        //    };
 
-            var line1 = new Line
-            {
-                X1 = 0,
-                Y1 = 0,
-                X2 = 200,
-                Y2 = 200,
-                Stroke = new SolidColorBrush(Colors.White),
-                StrokeThickness = 2
-            };
+        //    var line1 = new Line
+        //    {
+        //        X1 = 0,
+        //        Y1 = 0,
+        //        X2 = 200,
+        //        Y2 = 200,
+        //        Stroke = new SolidColorBrush(Colors.White),
+        //        StrokeThickness = 2
+        //    };
 
-            var line2 = new Line
-            {
-                X1 = 200,
-                Y1 = 0,
-                X2 = 0,
-                Y2 = 200,
-                Stroke = new SolidColorBrush(Colors.White),
-                StrokeThickness = 2
-            };
+        //    var line2 = new Line
+        //    {
+        //        X1 = 200,
+        //        Y1 = 0,
+        //        X2 = 0,
+        //        Y2 = 200,
+        //        Stroke = new SolidColorBrush(Colors.White),
+        //        StrokeThickness = 2
+        //    };
 
-            xShape.Children.Add(line1);
-            xShape.Children.Add(line2);
+        //    xShape.Children.Add(line1);
+        //    xShape.Children.Add(line2);
 
 
-            this.UpperLeftButton.IsEnabled = false;
-            this.UpperLeft.Children.Add(xShape);
-        }
+        //    this.UpperLeftButton.IsEnabled = false;
+        //    this.UpperLeft.Children.Add(xShape);
+        //}
     }
 }
