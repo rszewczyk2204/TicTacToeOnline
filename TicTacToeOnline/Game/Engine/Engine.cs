@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.UI.Xaml.Controls;
+﻿using System.Collections.Generic;
 
 namespace TicTacToeOnline.Game.Engine
 {
     public class Engine
     {
-        public static void DrawAnObject(Grid grid)
-        {
+        private Engine() { }
 
-        }
+        public static Engine Instance { get; private set; } = new Engine();
+
+        public void UpdateTable(string buttonName)
+        { }
+
+        private void Compute()
+        { }
     }
 }
