@@ -1,4 +1,5 @@
-﻿using TicTacToeOnline.Configuration.Layout.GridLayout.Presenter.Interface;
+﻿using System.Collections.Generic;
+using TicTacToeOnline.Configuration.Layout.GridLayout.Presenter.Interface;
 using TicTacToeOnline.Configuration.Layout.GridLayout.View.Interface;
 using TicTacToeOnline.Game.Engine;
 using Windows.UI.Xaml;
@@ -9,7 +10,7 @@ namespace TicTacToeOnline.Configuration.Layout.GridLayout.Presenter.Implementati
     public class GridPresenter : IGridPresenter
     {
         private readonly IGridView _grid;
-        private Engine engine;
+        private readonly Engine engine;
 
         public GridPresenter(IGridView _grid)
         {
@@ -25,8 +26,8 @@ namespace TicTacToeOnline.Configuration.Layout.GridLayout.Presenter.Implementati
 
             if (button.Content == null)
             {
-                button.Content = Functional.ReturnXOrEllipse();
-                engine.UpdateTable(button.Name);
+                button.Content = engine.ReturnXOrEllipse();
+                engine.UpdateTable(button);
             }
         }
     }
