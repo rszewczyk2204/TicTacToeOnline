@@ -1,4 +1,5 @@
-﻿using TicTacToeOnline.Configuration.Layout.GridLayout.Presenter.Implementation;
+﻿using System.Linq;
+using TicTacToeOnline.Configuration.Layout.GridLayout.Presenter.Implementation;
 using TicTacToeOnline.Configuration.Layout.GridLayout.View.Interface;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;

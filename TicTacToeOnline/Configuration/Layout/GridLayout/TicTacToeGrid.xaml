@@ -22,39 +22,39 @@
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0" Grid.Row="0">
-                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
+                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0" Name="UpperLeft"/>
                     <Border BorderThickness="0, 0, 10, 10" BorderBrush="White"/>
                 </Grid>
                 <Grid Grid.Column="0" Grid.Row="1">
-                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
+                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0" Name="Left"/>
                     <Border BorderThickness="0, 0, 10, 0" BorderBrush="White"/>
                 </Grid>
                 <Grid Grid.Column="0" Grid.Row="2">
-                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
+                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0" Name="LowerLeft"/>
                     <Border BorderThickness="0, 10, 10, 0" BorderBrush="White"/>
                 </Grid>
                 <Grid Grid.Column="1" Grid.Row="0">
-                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
+                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0" Name="Upper"/>
                     <Border BorderThickness="0, 0, 10, 10" BorderBrush="White"/>
                 </Grid>
                 <Grid Grid.Column="1" Grid.Row="1">
-                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
+                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0" Name="Middle"/>
                     <Border BorderThickness="0, 0, 10, 0" BorderBrush="White"/>
                 </Grid>
                 <Grid Grid.Column="1" Grid.Row="2">
-                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
+                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0" Name="Lower"/>
                     <Border BorderThickness="0, 10, 10, 0" BorderBrush="White"/>
                 </Grid>
                 <Grid Grid.Column="2" Grid.Row="0">
-                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
+                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0" Name="UpperRight"/>
                     <Border BorderThickness="0, 0, 0, 10" BorderBrush="White"/>
                 </Grid>
                 <Grid Grid.Column="2" Grid.Row="1">
-                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
+                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0" Name="Right"/>
                     <Border BorderThickness="0, 0, 0, 0" BorderBrush="White"/>
                 </Grid>
                 <Grid Grid.Column="2" Grid.Row="2">
-                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
+                    <Button Click="ButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0" Name="LowerRight"/>
                     <Border BorderThickness="0, 10, 0, 0" BorderBrush="White"/>
                 </Grid>
             </Grid>
